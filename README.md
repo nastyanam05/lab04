@@ -39,9 +39,12 @@ jobs:
   - name: Build HelloWorld 
     run: cmake --build ${{github.workspace}}/hello_world_application/build
  ```
+Заливаю на гит:
 
 ``` 
 git add -A
 git commit -m "commit"   
 git push origin main
+```
 
+Все тесты пройдены!
