@@ -1,0 +1,29 @@
+name: CMake
+
+on: # список триггеров для запуска процесса
+ push:
+  branches: [main]
+ pull_request:
+  branches: [main]
+
+jobs: # список задач
+ build_Linux: # наименование задачи
+
+  runs-on: ubuntu-latest # система
+
+  steps: # шаги задачи
+  - uses: actions/checkout@v3
+
+  - name: Configure Solver # наименование шага задачи
+    run: cmake ${{github.workspace}}/solver_application/ -B 
+${{github.workspace}}/solver_application/build
+
+  - name: Build Solver # наименование шага задачи
+    run: cmake --build ${{github.workspace}}/solver_application/build
+
+  - name: Configure HelloWorld # наименование шага задачи
+    run: cmake ${{github.workspace}}/hello_world_application/ -B 
+${{github.workspace}}/hello_world_application/build
+
+  - name: Build HelloWorld # наименование шага задачи
+    run: cmake --build ${{github.workspace}}/hello_world_application/build
